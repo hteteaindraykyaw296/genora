@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+.venv/
+.npm-cache/
+__pycache__/
+.pytest_cache/
+*.tsbuildinfo
+playwright-report/
+test-results/

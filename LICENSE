@@ -1,0 +1,7 @@
+MIT License
+Copyright (c) 2026 GENORA
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files, to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies, subject to inclusion of this copyright and permission notice.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE SOFTWARE OR THE USE OF THE SOFTWARE.
+Original educational diagrams and generated synthetic images are separately licensed CC BY 4.0, attribution GENORA.
+
+Third-party image assets in public/images/ are excluded from the MIT license and GENORA CC BY 4.0 grant. They retain the individual CC BY 4.0, CC BY 2.5, or CC BY-SA 3.0 licenses listed in docs/IMAGE-CREDITS.md and in each displayed attribution. No endorsement by the creators is implied.

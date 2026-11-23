@@ -1,0 +1,60 @@
+[
+  {
+    "organization": "CDC",
+    "url": "https://www.cdc.gov/cerebral-palsy/about/index.html",
+    "status": 200,
+    "title": "About Cerebral Palsy | Cerebral Palsy (CP) | CDC",
+    "accessed": "2026-11-10",
+    "clinical_review": false
+  },
+  {
+    "organization": "ACOG screening",
+    "url": "https://www.acog.org/womens-health/faqs/prenatal-genetic-screening-tests",
+    "status": 200,
+    "title": "value is what Coveo indexes and uses as the title in Search Results.--> <title>Prenatal Genetic Screening Tests | ACOG",
+    "accessed": "2026-11-10",
+    "clinical_review": false
+  },
+  {
+    "organization": "ACOG diagnostic",
+    "url": "https://www.acog.org/womens-health/faqs/prenatal-genetic-diagnostic-tests",
+    "status": 200,
+    "title": "value is what Coveo indexes and uses as the title in Search Results.--> <title>Prenatal Genetic Diagnostic Tests | ACOG",
+    "accessed": "2026-11-10",
+    "clinical_review": false
+  },
+  {
+    "organization": "MedlinePlus",
+    "url": "https://medlineplus.gov/genetics/understanding/",
+    "status": 200,
+    "title": "Help Me Understand Genetics: MedlinePlus Genetics",
+    "accessed": "2026-11-10",
+    "clinical_review": false
+  },
+  {
+    "organization": "ISUOG",
+    "url": "https://www.isuog.org/resource/updated-isuog-practice-guidelines-performance-fetal-magnetic-resonance-imaging.html",
+    "status": 200,
+    "title": "Updated ISUOG Practice Guidelines: performance of fetal magnetic resonance imaging",
+    "accessed": "2026-11-10",
+    "clinical_review": false,
+    "replaced_broken_url": "https://www.isuog.org/clinical-resources/patient-information-series/patient-information-pregnancy-conditions/brain/fetal-mri.html"
+  },
+  {
+    "organization": "WHO",
+    "url": "https://www.who.int/publications/i/item/9789241549912",
+    "status": 200,
+    "title": "WHO recommendations on antenatal care for a positive pregnancy experience",
+    "accessed": "2026-11-10",
+    "clinical_review": false
+  },
+  {
+    "organization": "MedlinePlus Medical Encyclopedia",
+    "url": "https://medlineplus.gov/ency/article/002398.htm",
+    "title": "Fetal development",
+    "status": 200,
+    "accessed": "2026-11-10",
+    "clinical_review": false,
+    "limitations": "Broad educational timeline; individual timing varies. Third-party images are not reused."
+  }
+]

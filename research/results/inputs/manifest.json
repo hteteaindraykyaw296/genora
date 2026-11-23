@@ -1,0 +1,65 @@
+[
+  {
+    "image": "isolated-42.png",
+    "mask": "isolated-42-mask.png",
+    "reference_count": 18,
+    "quality": "isolated",
+    "synthetic": true
+  },
+  {
+    "image": "isolated-43.png",
+    "mask": "isolated-43-mask.png",
+    "reference_count": 18,
+    "quality": "isolated",
+    "synthetic": true
+  },
+  {
+    "image": "isolated-44.png",
+    "mask": "isolated-44-mask.png",
+    "reference_count": 18,
+    "quality": "isolated",
+    "synthetic": true
+  },
+  {
+    "image": "low-contrast-42.png",
+    "mask": "low-contrast-42-mask.png",
+    "reference_count": 18,
+    "quality": "low-contrast",
+    "synthetic": true
+  },
+  {
+    "image": "low-contrast-43.png",
+    "mask": "low-contrast-43-mask.png",
+    "reference_count": 18,
+    "quality": "low-contrast",
+    "synthetic": true
+  },
+  {
+    "image": "low-contrast-44.png",
+    "mask": "low-contrast-44-mask.png",
+    "reference_count": 18,
+    "quality": "low-contrast",
+    "synthetic": true
+  },
+  {
+    "image": "overlap-42.png",
+    "mask": "overlap-42-mask.png",
+    "reference_count": 18,
+    "quality": "overlap",
+    "synthetic": true
+  },
+  {
+    "image": "overlap-43.png",
+    "mask": "overlap-43-mask.png",
+    "reference_count": 18,
+    "quality": "overlap",
+    "synthetic": true
+  },
+  {
+    "image": "overlap-44.png",
+    "mask": "overlap-44-mask.png",
+    "reference_count": 18,
+    "quality": "overlap",
+    "synthetic": true
+  }
+]

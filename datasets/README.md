@@ -1,0 +1,6 @@
+# Dataset provenance
+The public educational galleries now include three sourced microscopy figures and one 3D ultrasound example. See docs/IMAGE-CREDITS.md and docs/image-provenance.json for individual sources, licenses, specimen information, known scale and limitations. These are illustrative gallery assets, not an annotated evaluation dataset. Real-data research evaluation remains incomplete.
+
+Synthetic demonstration: original programmatic ellipses, seeds 42–44, three quality categories, 18 intended objects per image; generated masks are exact synthetic references, not manual clinical annotations. Overlaps merge instances and are intentional failure cases. Code license MIT; generated illustrations and synthetic inputs CC BY 4.0, attribution GENORA. No patients or specimens.
+
+For real data, record URL, authors, specimen, imaging method, license and license URL, download/access date, scale (or unknown), quality category, manual reference count and annotator protocol. Two independent annotators should resolve disagreements before evaluation. A manifest entry requires image, reference_count, quality; mask is optional. Keep licensed originals outside public/ and avoid identifiable images. A count alone cannot identify aneuploidy.

@@ -1,0 +1,10 @@
+image,quality,reference_count,predicted_count,absolute_error,method,mask_iou
+isolated-42.png,isolated,18,18,0,otsu,0.9993166287015945
+isolated-43.png,isolated,18,18,0,otsu,0.9993922358125048
+isolated-44.png,isolated,18,18,0,otsu,0.9998480589531262
+low-contrast-42.png,low-contrast,18,18,0,otsu,0.9883115903777996
+low-contrast-43.png,low-contrast,18,18,0,otsu,0.9875687485873578
+low-contrast-44.png,low-contrast,18,18,0,otsu,0.9880988249472733
+overlap-42.png,overlap,18,9,9,otsu,0.9986628265788933
+overlap-43.png,overlap,18,9,9,otsu,0.9987591769206907
+overlap-44.png,overlap,18,9,9,otsu,0.9994002399040384

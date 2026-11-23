@@ -1,0 +1,23 @@
+{
+  "kind": "synthetic",
+  "method": "otsu",
+  "mae": 3.0,
+  "n": 9,
+  "quality": [
+    {
+      "name": "isolated",
+      "mae": 0.0,
+      "images": 3
+    },
+    {
+      "name": "low-contrast",
+      "mae": 0.0,
+      "images": 3
+    },
+    {
+      "name": "overlap",
+      "mae": 9.0,
+      "images": 3
+    }
+  ]
+}
