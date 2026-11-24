@@ -1,275 +1,109 @@
-
-import {ScienceDrawing} from "./VisualAtlas";
-import {sections,descriptions} from "../../lib/content";
-
+import { HeartHandshake } from 'lucide-react';
+import { ScienceDrawing } from './VisualAtlas';
 
 const principles = [
-  {
-    title: "Mission",
-    text: "To make complex prenatal and genetic information accessible, scientifically responsible, and understandable to expectant families and caregivers."
-  },
-  {
-    title: "Vision",
-    text: "A healthcare information environment where families can explore scientific knowledge, understand uncertainty, and discuss disability and genetic conditions without stigma or blame."
-  },
-  {
-    title: "Goals",
-    text: "Translate biomedical concepts into clear explanations, develop interactive educational models, verify technical outputs, and document limitations for future improvement."
-  }
+  ['Mission', 'Make prenatal and genetic science accessible through clear explanations, diagrams, and interactive tools.'],
+  ['Vision', 'Help families explore biomedical information with confidence and discuss disability without stigma or blame.'],
+  ['Goals', 'Design accessible learning tools, verify their calculations, and explain what the models can show.'],
 ];
 
-const approach = [
-  {
-    number: "01",
-    title: "Identify the information problem",
-    text: "Define concepts that may be misunderstood, including genetic inheritance, screening probabilities, and the distinction between screening and diagnosis."
-  },
-  {
-    number: "02",
-    title: "Select scientific evidence",
-    text: "Use credible clinical guidance and scientific literature. Record publication dates, sources, assumptions, and uncertainty."
-  },
-  {
-    number: "03",
-    title: "Design the information output",
-    text: "Translate complex concepts into interactive diagrams, accessible explanations, and educational simulations."
-  },
-  {
-    number: "04",
-    title: "Verify and document",
-    text: "Check calculations against independent examples, test functionality and accessibility, and report unresolved limitations."
-  }
-];
-
-const resources = [
-  {
-    label: "WHO — Congenital disorders",
-    url: "https://www.who.int/news-room/fact-sheets/detail/birth-defects"
-  },
-  {
-    label: "MedlinePlus Genetics",
-    url: "https://medlineplus.gov/genetics/"
-  },
-  {
-    label: "ACOG — Prenatal Genetic Screening",
-    url: "https://www.acog.org/womens-health/faqs/prenatal-genetic-screening-tests"
-  },
-  {
-    label: "WCAG 2.2 Accessibility Standard",
-    url: "https://www.w3.org/TR/WCAG22/"
-  }
-];
+const pathways = [
+  { title: 'Genetics and inheritance', kind: 'dna', description: 'Explore DNA, genes, chromosomes, inheritance patterns, and genetic variation.', links: [[2, 'Understand inheritance'], [6, 'Explore epigenetics']] },
+  { title: 'Prenatal screening and information', kind: 'sample', description: 'Compare screening and diagnosis, then see how prevalence and test performance change the meaning of a result.', links: [[3, 'Understand testing'], [11, 'Watch animated lessons']] },
+  { title: 'Biomedical imaging and development', kind: 'brain', description: 'Follow prenatal development and see how ultrasound, MRI, and microscopy generate different kinds of information.', links: [[1, 'Explore development'], [5, 'Explore neuroimaging'], [4, 'Explore microscopy']] },
+] as const;
 
 export default function GenoraHome({go}:{go:(page:number,focus?:string)=>void}) {
   return (
     <div className="genora-home">
       <section className="genora-hero">
-        <div className="genora-container">
-          <p className="genora-eyebrow">
-            GENORA / Biomedical Science Education
-          </p>
-          <h1>
-            Making complex prenatal science <span>understandable</span>.
-          </h1>
-          <p className="genora-lead">
-            An evidence-informed educational platform for
-            expectant families, caregivers, and curious learners
-            exploring genetics, prenatal health, and biomedical
-            technology.
-          </p>
-          <p className="genora-mission">
-            GENORA aims to reduce barriers to understanding genetic conditions,
-            support informed healthcare conversations, and encourage respectful,
-            stigma-free perspectives on disability.
-          </p>
-          <div className="genora-actions">
-            <a className="genora-button" href="#home?focus=explore">
-              Explore GENORA
-            </a>
-            <a
-              className="genora-button genora-secondary"
-              href="#how-genora-was-built"
-            >
-              Our Methodology
-            </a>
+        <div className="genora-container genora-hero-grid">
+          <div>
+            <p className="genora-eyebrow">Biomedical science education</p>
+            <h1>Making genetic science easier to <span>understand</span>.</h1>
+            <p className="genora-lead">Explore prenatal development, inheritance, and screening through diagrams, interactive lessons, and hypothetical examples.</p>
+            <div className="genora-actions">
+              <a className="genora-button" href="#home?focus=explore">Explore the Science</a>
+              <a className="genora-button genora-secondary" href="#home?focus=why-genora">Why GENORA Exists</a>
+            </div>
+            <p className="genora-disclaimer">Educational content only. GENORA does not provide diagnosis, personalized medical advice, or clinical risk assessment.</p>
           </div>
-          <p className="genora-disclaimer">
-            Educational content only. GENORA does not provide
-            diagnosis, personalized medical advice, or clinical
-            risk assessment.
-          </p>
+          <figure className="genora-hero-figure">
+            <ScienceDrawing kind="dna" id="home-hero" />
+            <figcaption>DNA’s paired bases carry hereditary information. Educational schematic.</figcaption>
+          </figure>
         </div>
       </section>
 
-      <section
-        className="genora-section"
-        aria-labelledby="purpose-heading"
-      >
+      <section className="genora-section genora-soft" id="why-genora" tabIndex={-1} aria-labelledby="why-genora-heading">
         <div className="genora-container">
-          <p className="genora-eyebrow">Our Purpose</p>
-          <h2 id="purpose-heading">
-            Science should inform, not intimidate.
-          </h2>
+          <h2 id="why-genora-heading">Why GENORA exists</h2>
           <div className="genora-grid three">
-            {principles.map((item) => (
-              <article className="genora-card" key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="genora-section genora-soft">
-        <div className="genora-container genora-grid two">
-          <article>
-            <p className="genora-eyebrow">The Problem</p>
-            <h2>When medical information becomes a barrier</h2>
-            <p>
-              Prenatal screening information involves uncertainty,
-              probability, and technical terminology. Without
-              clear explanations, screening results may be
-              confused with definitive diagnoses.
-            </p>
-            <p>
-              Misunderstandings about genetic conditions and
-              disability can also contribute to stigma.
-              GENORA addresses these information challenges
-              through accessible scientific education.
-            </p>
-          </article>
-
-          <article>
-            <p className="genora-eyebrow">Our Proposed Solution</p>
-            <h2>From scientific information to understanding</h2>
-            <p>
-              GENORA combines referenced educational content,
-              biomedical visualizations, and interactive models
-              to demonstrate scientific principles.
-            </p>
-            <p>
-              Its tools are designed to support learning and
-              informed conversations, not to replace healthcare
-              professionals or predict individual outcomes.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section className="genora-section" id="explore" tabIndex={-1}>
-        <div className="genora-container">
-          <p className="genora-eyebrow">Explore the Science</p>
-          <h2>Learn through evidence and interaction</h2>
-          <p>
-            Explore prenatal development, genetics, molecular
-            concepts, imaging, and screening mathematics.
-          </p>
-          <div className="genora-modules">{[1,2,3,4,5,6,7,11].map((n,i)=><button className="genora-module" key={n} onClick={()=>go(n)}><ScienceDrawing kind={(['placenta','dna','sample','chromosome','brain','nucleosome','dna','sample'] as const)[i]} id={'welcome-'+i} labels={false}/><span><strong>{sections[n]}</strong><small>{descriptions[n]}</small></span></button>)}</div>
-          <div className="genora-actions"><button className="genora-button" onClick={()=>go(3,'simulator-controls')}>Try the screening simulator</button><button className="genora-button genora-secondary" onClick={()=>go(11)}>Watch animated lessons</button></div>
-          <div className="genora-family-links"><h3>Start with your questions</h3>{[[2,'Understand inheritance'],[3,'Understand testing'],[7,'Explore family support']].map(([n,label])=><button className="genora-button genora-secondary" key={n} onClick={()=>go(Number(n),'family-faq-'+n)}>{label}</button>)}</div>
-        </div>
-      </section>
-
-      <section
-        className="genora-section genora-soft"
-        id="methodology"
-      >
-        <div className="genora-container">
-          <p className="genora-eyebrow">
-            Healthcare Information Technology
-          </p>
-          <h2>Our design and verification approach</h2>
-          <div className="genora-grid two">
-            {approach.map((step) => (
-              <article className="genora-card" key={step.number}>
-                <span className="genora-step">
-                  {step.number}
-                </span>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-              </article>
-            ))}
-          </div>
-          <div className="genora-actions"><button className="genora-button genora-secondary" onClick={()=>go(12)}>See how Genora was built</button></div>
-          <p className="genora-note">
-            These steps describe the project methodology.
-            Verification outcomes must be reported separately
-            and only after the corresponding tests are run.
-          </p>
-        </div>
-      </section>
-
-      <section className="genora-section">
-        <div className="genora-container">
-          <p className="genora-eyebrow">Scientific Foundation</p>
-          <h2>Evidence before interpretation</h2>
-          <p>
-            GENORA uses established educational and clinical
-            references to guide content development. Numerical
-            claims should identify their source, population,
-            timeframe, and limitations.
-          </p>
-          <ul className="genora-resources">
-            {resources.map((resource) => (
-              <li key={resource.url}>
-                <a
-                  href={resource.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {resource.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="genora-section genora-soft">
-        <div className="genora-container">
-          <p className="genora-eyebrow">
-            Engineering Transparency
-          </p>
-          <h2>What we can and cannot demonstrate</h2>
-          <div className="genora-grid two">
-            <article className="genora-card">
-              <h3>Technical verification</h3>
-              <p>
-                The screening simulator can be evaluated using
-                independently calculated examples, boundary
-                cases, input validation, and automated tests.
-              </p>
+            <article className="genora-card genora-problem">
+              <ScienceDrawing kind="chromosome" id="home-problem-dna" />
+              <h3>Complex biomedical information</h3>
+              <p>Words like chromosome, gene variant, and inheritance can be unfamiliar. A diagram gives learners something concrete to connect with each term before they encounter it in a report or conversation.</p>
+              <button className="textlink" onClick={()=>go(2)}>Learn the genetics basics</button>
             </article>
-            <article className="genora-card">
-              <h3>Current limitations</h3>
-              <p>
-                The platform has not established clinical
-                effectiveness or demonstrated improvements
-                in real-world user outcomes. Formal external
-                usability evaluation remains future work.
-              </p>
+            <article className="genora-card genora-problem">
+              <figure className="genora-mini-figure">
+                <div className="genora-two-outcomes"><span>Condition present</span><span>Condition absent</span></div>
+                <figcaption>Two possible groups among positive screens. Box sizes are illustrative.</figcaption>
+              </figure>
+              <h3>Understanding screening uncertainty</h3>
+              <p>People with and without a condition can both receive a positive screen. A population example shows how these results can occur together and what the result leaves uncertain.</p>
+              <button className="textlink" onClick={()=>go(3,'simulator-controls')}>Open the population model</button>
+            </article>
+            <article className="genora-card genora-problem">
+              <figure className="genora-mini-figure">
+                <HeartHandshake size={54} strokeWidth={1.4} aria-hidden="true" />
+                <figcaption>Ask, listen, and make room for individual choices.</figcaption>
+              </figure>
+              <h3>Misunderstanding and stigma</h3>
+              <p>Misconceptions about disability and genetic conditions can lead to blame. Clear information can support respectful conversations that make room for people’s experiences, preferences, and questions.</p>
+              <button className="textlink" onClick={()=>go(7,'family-faq-7')}>Explore family support</button>
             </article>
           </div>
         </div>
       </section>
 
-      <section className="genora-section">
+      <section className="genora-section" id="explore" tabIndex={-1} aria-labelledby="explore-heading">
         <div className="genora-container">
-          <p className="genora-eyebrow">Why GENORA Exists</p>
-          <h2>Biomedical knowledge should be accessible.</h2>
-          <p>
-            GENORA reflects an interest in inclusive healthcare,
-            biomedical engineering, and the responsible
-            communication of scientific information.
-          </p>
-          <p>
-            The project explores how healthcare information
-            technology can help translate complex concepts
-            into educational experiences that are easier
-            to understand and engage with.
-          </p>
-          <div className="genora-actions"><button className="genora-button" onClick={()=>go(9)}>Read the story, scope and limitations</button><button className="genora-button genora-secondary" onClick={()=>go(12)}>Explore my engineering curiosity</button></div>
+          <h2 id="explore-heading">Explore GENORA</h2>
+          <div className="genora-grid three">
+            {pathways.map(({title, kind, description, links}, index)=>(
+              <article className="genora-card genora-pathway" key={title}>
+                <ScienceDrawing kind={kind} id={'home-pathway-'+index} labels={false} />
+                <h3>{title}</h3><p>{description}</p>
+                <div className="genora-pathway-links">
+                  {links.map(([topic,label])=><button className="textlink" key={topic} onClick={()=>go(topic)}>{label}</button>)}
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="genora-actions"><button className="genora-button" onClick={()=>go(3,'simulator-controls')}>Try the screening simulator</button></div>
+        </div>
+      </section>
+
+      <section className="genora-section genora-soft" id="methodology" aria-labelledby="engineering-heading">
+        <div className="genora-container">
+          <h2 id="engineering-heading">The Engineering Behind GENORA</h2>
+          <p>Trace how published evidence becomes a computational model, how its outputs are checked, and how diagrams and labels help people interpret them.</p>
+          <div className="genora-actions">
+            <button className="genora-button" onClick={()=>go(12)}>Engineering Lab &amp; Verification</button>
+            <button className="genora-button genora-secondary" onClick={()=>go(10)}>Scientific references</button>
+          </div>
+        </div>
+      </section>
+
+      <section className="genora-section" aria-labelledby="purpose-heading">
+        <div className="genora-container">
+          <h2 id="purpose-heading">Our purpose</h2>
+          <div className="genora-grid three">
+            {principles.map(([title,text])=><article className="genora-card" key={title}><h3>{title}</h3><p>{text}</p></article>)}
+          </div>
+          <p>GENORA grew from my interest in making biological differences easier to understand and in addressing the misconceptions that can lead to fear or blame.</p>
+          <button className="textlink" onClick={()=>go(9)}>Read the founder’s story</button>
         </div>
       </section>
     </div>

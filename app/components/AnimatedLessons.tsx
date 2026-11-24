@@ -1,4 +1,5 @@
 'use client';
+import {publicAsset} from '../../lib/public-asset';
 
 import {useState} from 'react';
 
@@ -72,8 +73,8 @@ export default function AnimatedLessons() {
     <h2 id="lesson-title">{lesson.title}</h2>
     <p>{lesson.summary} Each clip is a silent animation. The explanation below covers the same content.</p>
     <video key={lesson.id} controls playsInline preload="metadata" width={960} height={540} aria-label={lesson.title}>
-      <source src={'/videos/'+lesson.id+'.webm'} type="video/webm"/>
-      <a href={'/videos/'+lesson.id+'.webm'}>Download this animation</a>
+      <source src={publicAsset(`/videos/${lesson.id}.webm`)} type="video/webm"/>
+      <a href={publicAsset(`/videos/${lesson.id}.webm`)}>Download this animation</a>
     </video>
     <details key={lesson.id+'-transcript'}><summary>Read the video explanation</summary><ol>{lesson.transcript.map(line=><li key={line}>{line}</li>)}</ol></details>
     <div className="lesson-case">

@@ -1,5 +1,4 @@
 name: Publish GENORA website
-
 on:
   push:
     branches: [main]
@@ -20,47 +19,21 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - uses: actions/checkout@v6
-
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: '22'
           cache: npm
-
       - uses: actions/configure-pages@v5
-
-      - name: Prepare GENORA for the /genora/ address
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
-
-          config = Path("next.config.ts")
-          config.write_text(config.read_text().replace(
-              "output: 'export'", "basePath: '/genora', output: 'export'"
-          ))
-
-          files = [
-              "app/page.tsx",
-              "app/components/AnimatedLessons.tsx",
-              "app/components/PortfolioCase.tsx",
-              "lib/visuals.ts",
-          ]
-          pattern = r"""(['"])/(images/|videos/|research-overlap-|research-results\.csv|count-error\.png|methodology\.md|image-credits\.md)"""
-          for filename in files:
-              path = Path(filename)
-              path.write_text(re.sub(pattern, r"\1/genora/\2", path.read_text()))
-          PY
-
+        id: pages
       - run: npm ci
+      - run: npm test
       - run: npm run build
-
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
       - uses: actions/upload-pages-artifact@v4
         with:
           path: out
-
-      - name: Publish to GitHub Pages
+      - uses: actions/deploy-pages@v4
         id: deployment
-        uses: actions/deploy-pages@v4

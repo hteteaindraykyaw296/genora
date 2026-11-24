@@ -3,6 +3,15 @@ import {screening,offspring,calculateScreeningMetrics} from '../lib/science';
 import {formatProbability,screeningCSV} from '../lib/screening-output';
 
 describe('family worked examples',()=>{
+ it('agrees with an exact-count reference at imperfect sensitivity and specificity',()=>{
+  const result=screening(1000,.2,.75,.875);
+  expect(result.tp).toBeCloseTo(150,10);
+  expect(result.fp).toBeCloseTo(100,10);
+  expect(result.tn).toBeCloseTo(700,10);
+  expect(result.fn).toBeCloseTo(50,10);
+  expect(result.ppv).toBeCloseTo(3/5,12);
+  expect(result.npv).toBeCloseTo(14/15,12);
+ });
  it('matches independently worked expected counts',()=>{
   const a=screening(10000,.001,.99,.999),b=screening(10000,.01,.99,.999);
   expect(a.tp).toBeCloseTo(9.9);expect(a.fp).toBeCloseTo(9.99);

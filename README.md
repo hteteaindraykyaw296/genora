@@ -59,6 +59,21 @@ Verification details and content review items are in
 See docs/DEPLOYMENT.md for Netlify and Cloudflare Pages. The exported site uses client-side educational sections and hash links; it needs no paid backend. Preferences are memory-only. Provider request logs are outside application control.
 
 ## Evidence and limitations
-This project is NOT a medical device or clinical decision-support system. No clinician review has occurred. Source records include audit status; medical content requires professional review before clinical use. Three sourced microscopy figures and a 3D fetal ultrasound example are included with individual licenses and provenance in docs/IMAGE-CREDITS.md. Each section includes original labeled schematic illustrations. The adjustable synthetic viewer remains a separate demonstration. Real microscopy evaluation is incomplete. Synthetic counts cannot diagnose aneuploidy. No public source-code URL is configured; all code is included locally.
+This project is NOT a medical device or clinical decision-support system. No clinician review has occurred. Source records include audit status; medical content requires professional review before clinical use. Three sourced microscopy figures and a 3D fetal ultrasound example are included with individual licenses and provenance in docs/IMAGE-CREDITS.md. Each section includes original labeled schematic illustrations. The adjustable synthetic viewer remains a separate demonstration. Real microscopy evaluation is incomplete. Synthetic counts cannot diagnose aneuploidy. The [public GitHub repository](https://github.com/hteteaindraykyaw296/genora) contains the source code.
 
 Code: MIT (LICENSE). Original diagrams and generated synthetic images: CC BY 4.0, attribution GENORA. Third-party scientific image licenses and attributions are listed separately in docs/IMAGE-CREDITS.md.
+
+## Biomedical engineering portfolio
+
+GENORA is a static educational application for families, caregivers, and learners. It combines evidence-informed explanations, original labeled schematics, a conditional-probability model, and a separate synthetic microscopy experiment. The screening interface transforms hypothetical inputs into expected counts, predictive values, and a labeled proportional display. Independent worked examples, invalid inputs, and empty result groups make the model reproducible. The founder supplied the project motivation and firsthand account. Code, writing, and illustrations were developed with AI assistance. Confirm your individual contributions before an admissions submission.
+
+## Publishing on GitHub Pages
+
+1. In the GitHub repository, open **Settings → Pages** and select **GitHub Actions** under **Source**.
+2. Review and merge the updated source and `.github/workflows/deploy-pages.yml` together. If your repository contains the earlier tutorial workflow, use this version in its place. The app now handles the deployment path during the build.
+3. In **Actions**, open **Publish GENORA website**. A push to `main` starts it automatically. You can also run it manually.
+4. After deployment succeeds, open **Settings → Pages → Visit site**. Check an animated lesson, a microscopy image, a research download, and the screening simulator.
+
+The workflow tests and builds with Node 22 and publishes only `out/`. It obtains the GitHub Pages path from the Pages action. For a Windows build with the same project path, set `$env:NEXT_PUBLIC_BASE_PATH = '/genora'` in PowerShell before running `npm run build`. Serve the export under `/genora/`. Leave the variable unset for the regular localhost preview.
+
+The [engineering lab audit](docs/engineering-lab-review.md) records the verification scope, source checks, and remaining limitations.

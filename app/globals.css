@@ -141,43 +141,58 @@ h3 { font-weight: 600; }
 .genora-home .genora-grid { display: grid; gap: 20px; }
 .genora-home .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .genora-home .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.genora-home .genora-card,.genora-home .genora-module {
+.genora-home .genora-card {
   border: 1px solid var(--line);
   border-radius: 12px;
   background: var(--panel);
 }
 .genora-home .genora-card { padding: clamp(18px, 2.5vw, 26px); }
 .genora-home .genora-card p { margin: 0; }
-.genora-home .genora-step { display: block; font-size: 1.5rem; font-weight: 700; color: var(--violet); margin-bottom: 12px; }
-.genora-home .genora-note { font-size: .9rem; margin-top: 25px; border-left: 3px solid var(--violet); padding-left: 16px; }
-.genora-home .genora-resources { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; }
-.genora-home .genora-resources a { text-underline-offset: 3px; overflow-wrap: anywhere; }
-.genora-home .genora-modules { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 24px; }
-.genora-home .genora-module {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding: 0;
-  min-width: 0;
-  overflow: hidden;
-}
-.genora-home .genora-module:hover { background: var(--soft); border-color: var(--violet); }
-.genora-home .genora-module svg { display: block; width: 100%; height: 156px; flex: none; }
-.genora-home .genora-module span { display: block; padding: 16px 18px 20px; }
-.genora-home .genora-module strong { display: block; font-size: 1.125rem; font-weight: 650; line-height: 1.3; margin-bottom: 8px; }
-.genora-home .genora-module small { display: block; font-size: .9375rem; line-height: 1.55; color: var(--muted); }
-.genora-home .genora-family-links { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; }
-.genora-home .genora-family-links h3 { flex-basis: 100%; }
 .genora-home #explore { scroll-margin-top: 24px; }
 
-@media (max-width: 940px) {
-  .genora-home .genora-modules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
 @media (max-width: 760px) {
   .genora-home .three,.genora-home .two { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .genora-home .genora-modules,.genora-home .genora-resources { grid-template-columns: 1fr; }
   .genora-home .genora-lead { font-size: 1.0625rem; }
   .genora-home .genora-hero .genora-button { padding-inline: 14px; }
+}
+
+/* Illustrated learning pathways */
+.genora-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1.15fr) minmax(0,1fr);
+  align-items: center;
+  gap: clamp(20px,5vw,70px);
+}
+.genora-home .genora-hero h1 { font-size: clamp(2.125rem,4.5vw,3.75rem); }
+.genora-hero-figure,.genora-mini-figure { margin: 0; }
+.genora-hero-figure svg,.genora-problem svg[role="img"],.genora-pathway svg { display: block; width: 100%; }
+.genora-hero-figure figcaption,.genora-mini-figure figcaption { color: var(--muted); font-size: .875rem; margin-top: 8px; }
+.genora-home .genora-problem,.genora-home .genora-pathway { display: flex; flex-direction: column; }
+.genora-problem > svg,.genora-problem > figure,.genora-pathway > svg { height: 150px; margin-bottom: 16px; }
+.genora-mini-figure { display: grid; place-content: center; justify-items: center; text-align: center; color: var(--violet); }
+.genora-two-outcomes { display: flex; gap: 6px; }
+.genora-two-outcomes span { border: 1px solid var(--violet); border-radius: 6px; padding: 6px; font-size: .875rem; }
+.genora-problem .textlink,.genora-pathway-links { margin-top: auto; }
+.genora-home .textlink { font-size: .9375rem; min-height: 44px; text-align: left; text-decoration: underline; }
+.genora-pathway-links { display: flex; flex-wrap: wrap; gap: 0 14px; }
+.genora-home [id][tabindex] { scroll-margin: 16px; }
+@media(max-width:760px) {
+  .genora-hero-grid { grid-template-columns: 1fr; }
+  .genora-hero-figure { max-width: 450px; }
+}
+
+.engineering-flow { padding: 0; list-style: none; }
+.engineering-flow li { display: grid; gap: 4px; padding: 12px; border-left: 3px solid var(--violet); background: var(--soft); }
+.engineering-flow li strong { color: var(--ink); }
+.engineering-modalities { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.verification-table th,.verification-table td { vertical-align: top; font-size: .875rem; }
+.screening-chart { margin-block: 20px; margin-inline: 0; }
+.screening-chart figcaption { color: var(--muted); font-size: .875rem; }
+.screening-chart .true-positive-share { background: var(--violet); }
+.screening-chart .false-positive-share { background: repeating-linear-gradient(135deg,var(--soft) 0 5px,var(--lavender) 5px 10px); }
+@media(max-width:760px) {
+  .engineering-modalities { grid-template-columns: 1fr; }
+  .verification-table th,.verification-table td { padding: 7px; }
 }

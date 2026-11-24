@@ -3,10 +3,15 @@ import AxeBuilder from '@axe-core/playwright';
 
 test('family paths and screening example',async({page})=>{
  await page.goto('/');
- await expect(page.getByRole('heading',{level:1})).toContainText('Making complex prenatal science');
+ await expect(page.getByRole('heading',{level:1})).toContainText('Making genetic science');
+ await page.getByRole('link',{name:'Why GENORA Exists',exact:true}).press('Enter');
+ await expect(page.locator('#why-genora')).toBeFocused();
+ await page.getByRole('link',{name:'Explore the Science',exact:true}).press('Enter');
+ await expect(page.locator('#explore')).toBeFocused();
  await page.getByRole('button',{name:'Try the screening simulator',exact:true}).click();
  await expect(page.locator('#simulator-controls')).toBeFocused();
  await expect(page.getByText('49.77%',{exact:true}).first()).toBeVisible();
+ await expect(page.locator('.screening-chart figcaption')).toContainText('49.77% are true positives');
  await expect(page.getByText('90.91%',{exact:true})).toBeVisible();
  await page.getByLabel('Condition prevalence (%)',{exact:true}).fill('1');
  await expect(page.getByText('90.91%',{exact:true})).toHaveCount(2);
@@ -22,7 +27,7 @@ test('phone actions, keyboard focus and larger text',async({page})=>{
  await page.keyboard.press('Tab');
  await expect(page.getByRole('link',{name:'Skip to content'})).toBeFocused();
  await page.keyboard.press('Tab');
- const primary=await page.getByRole('link',{name:'Explore GENORA',exact:true}).boundingBox();
+ const primary=await page.getByRole('link',{name:'Explore the Science',exact:true}).boundingBox();
  expect(primary!.y+primary!.height).toBeLessThan(844);
  await page.getByRole('button',{name:'Toggle larger text'}).click();
  await page.getByRole('button',{name:'Understand inheritance',exact:true}).click();

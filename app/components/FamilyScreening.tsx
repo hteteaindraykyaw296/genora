@@ -21,7 +21,7 @@ export default function FamilyScreening(){
   return <section className="panel simulator" id="screening-simulator">
     <h2>What does a positive screening result mean?</h2>
     <p><strong>Fictional example.</strong> Sam reads “positive” on a prenatal screening report and wonders if it confirms a diagnosis. A positive screen indicates a higher chance of a selected condition. The next conversation can clarify what the test measured and what options fit the family’s wishes.</p>
-    <p>Explore the information using illustrative assumptions below. Enter hypothetical population values only.</p>
+    <p>The model starts with 10,000 hypothetical people. Prevalence is how common the condition is, sensitivity is the share of people with the condition who screen positive, and specificity is the share without the condition who screen negative.</p>
     <fieldset id="simulator-controls" tabIndex={-1}><legend>Simulator controls</legend>{labels.map((label,i)=><div className="control" key={label}>
       <label htmlFor={'screen-'+i}>{label}</label><input id={'screen-'+i} type="number" min={i===0?1:0} max={i===0?1000000:100} step={i===0?1:.01} value={values[i]} onChange={event=>update(i,event.target.valueAsNumber)}/>
       <input aria-label={label+' slider'} type="range" min={i===0?1:0} max={i===0?1000000:100} step={i===0?1:.01} value={values[i]} onChange={event=>update(i,+event.target.value)}/>
@@ -29,11 +29,15 @@ export default function FamilyScreening(){
     <div aria-live="polite">
       <h3>Among expected positive results</h3>
       <div className="matrix"><div className="correct"><span>True positives — condition present</span><strong>{number(r.tp)}</strong></div><div className="incorrect"><span>False positives — condition absent</span><strong>{number(r.fp)}</strong></div></div>
+      {r.ppv!==null&&<figure className="screening-chart">
+        <div className="result-chart" aria-hidden="true"><span className="true-positive-share" style={{width:(r.ppv*100)+'%'}}/><span className="false-positive-share" style={{width:((1-r.ppv)*100)+'%'}}/></div>
+        <figcaption>Among expected positive results, {formatProbability(r.ppv)} are true positives and {formatProbability(1-r.ppv)} are false positives. The solid segment represents true positives.</figcaption>
+      </figure>}
       <p>These are population-level expectations. A value such as 9.99 represents an average expected across hypothetical groups, so it can be fractional.</p>
       <div className="predictive"><div><span>Positive predictive value</span><strong>{formatProbability(r.ppv)}</strong></div><div><span>Negative predictive value</span><strong>{formatProbability(r.npv)}</strong></div></div>
       {r.ppv===null&&<p>Positive predictive value is undefined because the model predicts no positive results.</p>}
       {r.npv===null&&<p>Negative predictive value is undefined because the model predicts no negative results.</p>}
-      <p>Expected true negatives {number(r.tn)} · Expected false negatives {number(r.fn)}.</p>
+      <p>Of the expected negative screens, {number(r.tn)} are true negatives (condition absent) and {number(r.fn)} are false negatives (condition present). Negative predictive value is the share of expected negative screens that are true negatives.</p>
     </div>
     <button className="secondary" onClick={()=>setCompare(!compare)} aria-expanded={compare}>{compare?'Hide':'Compare'} prevalence scenarios</button>
     {compare&&<section aria-label="Worked population comparison"><h3>Same hypothetical test, two populations</h3><p>Each population has 10,000 people. Sensitivity is 99% and specificity is 99.9% in both.</p>
@@ -46,6 +50,6 @@ export default function FamilyScreening(){
     <button className="secondary" onClick={download}>Export CSV</button>
     <h3>Questions for your care team</h3><ul><li>What did this test look for?</li><li>What does my result leave uncertain?</li><li>What options can we discuss next?</li></ul>
     <p><a href="#choices-care">Open appointment checklist and caregiver resources</a></p>
-    <p className="small"><a href="https://www.acog.org/womens-health/faqs/prenatal-genetic-screening-tests">ACOG explains prenatal screening</a>. These expected counts cannot estimate a person’s pregnancy risk.</p>
+    <p className="small"><a href="https://www.acog.org/womens-health/faqs/prenatal-genetic-screening-tests">ACOG explains prenatal screening</a>. Screening estimates likelihood. The model assumes a single set of test characteristics and a single prevalence. Real performance can vary by population and clinical context, and some methods require more complex models. The results are for learning about probability and cannot estimate an individual pregnancy’s risk or guide medical decisions.</p>
   </section>;
 }
